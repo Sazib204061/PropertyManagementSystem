@@ -21,7 +21,7 @@ namespace ProjectManagementSystem.Application.Appointments
             _mapper = mapper;
         }
 
-      
+        // ✅ Add Appointment
         public async Task AddAppointmentAsync(AppointmentVM appointmentVM)
         {
             var appointmentToCreate = _mapper.Map<Appointment>(appointmentVM);
@@ -51,13 +51,12 @@ namespace ProjectManagementSystem.Application.Appointments
 
         public async Task<AppointmentVM> GetAppointmentByNameAsync(string name)
         {
-            var appointments = await _appointmentRepository.GetAllAsync(); // Get all records
-            var appointment = appointments.FirstOrDefault(a => a.UserName.Equals(name, StringComparison.OrdinalIgnoreCase));
+            var ap = _appointmentRepository.Table.Where(x => x.UserName == name).FirstOrDefault();
 
-            if (appointment == null)
+            if (ap == null)
                 throw new KeyNotFoundException("Appointment not found.");
 
-            return _mapper.Map<AppointmentVM>(appointment);
+            return _mapper.Map<AppointmentVM>(ap);
         }
 
 
