@@ -16,7 +16,7 @@ namespace ProjectManagementSystem.Application.Repository
             //add all services here
             services.AddScoped<ICityService, CityService>();
 
-            services.AddAutoMapper(Assembly.GetExecutingAssembly());
+            //services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
             return services;
         }
