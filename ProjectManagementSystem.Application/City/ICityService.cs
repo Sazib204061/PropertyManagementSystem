@@ -10,7 +10,7 @@ namespace ProjectManagementSystem.Application.City
     public interface ICityService
     {
         Task<IList<CityVM>> GetAllCitiesAsync();
-        Task GetCityByIdAsync(int id);
+        Task<CityVM> GetCityByIdAsync(int id);
         Task AddCityAsync(CityVM city);
         Task UpdateCityAsync(int Id, CityVM city);
         Task DeleteCityAsync(int id);
