@@ -14,6 +14,7 @@ namespace ProjectManagementSystem.Application.Owner
         public string? ContactNumber { get; set; }
         public string? Email { get; set; }
         public ICollection<Property> Properties { get; set; }
-        
+
+        //public string? ContactNumber { get; set; }
     }
 }
