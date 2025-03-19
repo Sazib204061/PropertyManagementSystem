@@ -5,6 +5,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
+using ProjectManagementSystem.Application.Appointment;
 using ProjectManagementSystem.Application.City;
 
 namespace ProjectManagementSystem.Application.Repository
@@ -14,9 +15,12 @@ namespace ProjectManagementSystem.Application.Repository
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
             //add all services here
+          
             services.AddScoped<ICityService, CityService>();
 
-            services.AddAutoMapper(Assembly.GetExecutingAssembly());
+            services.AddScoped<IAppointmentService, AppointmentService>();
+
+            //services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
             return services;
         }

@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ProjectManagementSystem.Application.Repository;
 
 namespace ProjectManagementSystem.Application.City
 {
     public class CityService : ICityService
     {
-        private readonly IBaseRepository<City> _cityRepository;
+        private readonly IBaseRepository<CityVM> _cityRepository;
 
-        public CityService(IBaseRepository<City> cityRepository)
+        public CityService(IBaseRepository<CityVM> cityRepository)
         {
             _cityRepository = cityRepository;
         }
