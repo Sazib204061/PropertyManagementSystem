@@ -1,17 +1,19 @@
-﻿using System;
+﻿using ProjectManagementSystem.Domain.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProjectManagementSystem.Domain.Entities
+namespace ProjectManagementSystem.Application.Owner
 {
-    public class Owner
+    public class OwnerVM
     {
-        public string Name { get; set; } = string.Empty;
+        public int Id { get; set; }
+        public string? Name { get; set; }
         public string? ContactNumber { get; set; }
         public string? Email { get; set; }
         public ICollection<Property> Properties { get; set; }
-
+        
     }
 }
