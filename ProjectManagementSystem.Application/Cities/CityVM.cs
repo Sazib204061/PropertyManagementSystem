@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProjectManagementSystem.Application.City
+namespace ProjectManagementSystem.Application.Cities
 {
     public class CityVM
     {

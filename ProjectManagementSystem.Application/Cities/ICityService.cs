@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ProjectManagementSystem.Domain.Entities;
 
-namespace ProjectManagementSystem.Application.City
+namespace ProjectManagementSystem.Application.Cities
 {
     public interface ICityService
     {

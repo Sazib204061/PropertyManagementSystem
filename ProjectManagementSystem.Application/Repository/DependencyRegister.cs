@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Reflection;
 using Microsoft.Extensions.DependencyInjection;
-using ProjectManagementSystem.Application.City;
+using ProjectManagementSystem.Application.Cities;
+using ProjectManagementSystem.Application.Properties;
 
 namespace ProjectManagementSystem.Application.Repository
 {
@@ -14,6 +10,7 @@ namespace ProjectManagementSystem.Application.Repository
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
             //add all services here
+            services.AddScoped<IPropertyService, PropertyService>();
             services.AddScoped<ICityService, CityService>();
 
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
