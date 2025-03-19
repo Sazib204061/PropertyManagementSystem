@@ -3,37 +3,60 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
 using ProjectManagementSystem.Application.Repository;
 
 namespace ProjectManagementSystem.Application.PropertyDetails
 {
     public class PropertyDetailsService : IPropertyDetailsService
+
     {
         private readonly IBaseRepository<PropertyDetailsVM> _propertyDetailsRepository;
-        public PropertyDetailsService(IBaseRepository<PropertyDetailsVM> propertyDetailsRepository)
+        private readonly IMapper _mapper;
+        public PropertyDetailsService(IBaseRepository<PropertyDetailsVM> propertyDetailsRepository, IMapper mapper)
         {
             _propertyDetailsRepository = propertyDetailsRepository;
+            _mapper = mapper;
 
         }
-        public Task AddPropertyDetailsAsync(PropertyDetailsVM propertyDetails)
+
+        public async Task<IList<PropertyDetailsVM>> GetAllPropertyDetailsAsync()
         {
-            throw new NotImplementedException();
+            var propertyDetails = await _propertyDetailsRepository.GetAllAsync();
+            return _mapper.Map<IList<PropertyDetailsVM>>(propertyDetails);
         }
-        public Task DeletePropertyDetailsAsync(int id)
+        public async Task AddPropertyDetailsAsync(PropertyDetailsVM propertyDetails)
         {
-            throw new NotImplementedException();
+            var propertyDetailsEntity = _mapper.Map<PropertyDetailsVM>(propertyDetails);
+            await _propertyDetailsRepository.AddAsync(propertyDetailsEntity);
         }
-        public Task<IList<PropertyDetailsVM>> GetAllPropertyDetailsAsync()
+        public async Task<PropertyDetailsVM> GetPropertyDetailsByIdAsync(int Id)
         {
-            throw new NotImplementedException();
+            var propertyDetails = await _propertyDetailsRepository.GetByIdAsync(Id);
+            return _mapper.Map<PropertyDetailsVM>(propertyDetails);
+
         }
-        public Task GetPropertyDetailsByIdAsync(int id)
+        public async Task UpdatePropertyDetailsAsync(int Id, PropertyDetailsVM propertyDetails)
         {
-            throw new NotImplementedException();
+            var existingPropertyDetails = await _propertyDetailsRepository.GetByIdAsync(Id);
+            if (existingPropertyDetails == null)
+            {
+                throw new Exception("Property Details not found");
+            }
+            _mapper.Map(propertyDetails, existingPropertyDetails);
+            await _propertyDetailsRepository.UpdateAsync(existingPropertyDetails);
         }
-        public Task UpdatePropertyDetailsAsync(int Id, PropertyDetailsVM propertyDetails)
+
+        public async Task DeletePropertyDetailsAsync(int Id)
         {
-            throw new NotImplementedException();
+            var existingPropertyDetails = await _propertyDetailsRepository.GetByIdAsync(Id);
+            if (existingPropertyDetails == null)
+            {
+                throw new Exception("Property Details not found");
+            }
+            await _propertyDetailsRepository.DeleteAsync(Id);
+
+
         }
     }
 }
