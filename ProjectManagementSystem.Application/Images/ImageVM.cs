@@ -9,6 +9,6 @@ namespace ProjectManagementSystem.Application.Images
     public class ImageVM
     {
         public int ImageId { get; set; }
-        public string Path { get; set; }
+        public string Path { get; set; } = string.Empty;
     }
 }

@@ -18,8 +18,6 @@ namespace ProjectManagementSystem.Application.Repository
             services.AddScoped<ICityService, CityService>();
             services.AddScoped<IImageFileService, ImageFileService>();
 
-
-
             //services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
             return services;
