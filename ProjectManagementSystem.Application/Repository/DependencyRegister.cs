@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using ProjectManagementSystem.Application.City;
+using ProjectManagementSystem.Application.Images;
 
 namespace ProjectManagementSystem.Application.Repository
 {
@@ -15,6 +16,7 @@ namespace ProjectManagementSystem.Application.Repository
         {
             //add all services here
             services.AddScoped<ICityService, CityService>();
+            services.AddScoped<IImageFileService, ImageFileService>();
 
             //services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
