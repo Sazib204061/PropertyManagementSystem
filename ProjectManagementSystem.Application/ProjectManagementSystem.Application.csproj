@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <Folder Include="Appointment\" />
-    <Folder Include="Image\" />
     <Folder Include="Owner\" />
     <Folder Include="Zone\" />
     <Folder Include="PropertyDetails\" />
