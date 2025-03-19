@@ -3,20 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ProjectManagementSystem.Domain.Common;
 
 namespace ProjectManagementSystem.Domain.Entities
 {
-    public class Owner
+    public class Owner : BaseEntity
     {
-        public int OwnerId { get; set; }
-        public string OwnerName { get; set; } = string.Empty;
-        public int ContactNumber { get; set; }
+        public string Name { get; set; } = string.Empty;
+        public string? ContactNumber { get; set; }
         public string Email { get; set; }
-        public ICollection<Property> Property { get; set; }
-
-
-
-
+        public ICollection<Property> Properties { get; set; }
 
     }
 }
