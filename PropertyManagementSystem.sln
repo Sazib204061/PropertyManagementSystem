@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectManagementSystem.Dom
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectManagementSystem.Application", "ProjectManagementSystem.Application\ProjectManagementSystem.Application.csproj", "{3227180F-C55D-4457-AF8C-C06849F370EC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PropertyManagementSystem.Infrastructure", "PropertyManagementSystem.Infrastructure\PropertyManagementSystem.Infrastructure.csproj", "{E7D6ADA5-B693-43D5-B258-FA8EEDBEB91B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +25,10 @@ Global
 		{3227180F-C55D-4457-AF8C-C06849F370EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3227180F-C55D-4457-AF8C-C06849F370EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3227180F-C55D-4457-AF8C-C06849F370EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7D6ADA5-B693-43D5-B258-FA8EEDBEB91B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7D6ADA5-B693-43D5-B258-FA8EEDBEB91B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7D6ADA5-B693-43D5-B258-FA8EEDBEB91B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7D6ADA5-B693-43D5-B258-FA8EEDBEB91B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -30,5 +36,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{DEDC63C1-718D-4D8E-BD34-15FC8918409B} = {80F3576A-389B-4F5F-A9B8-E4DF4C8730ED}
 		{3227180F-C55D-4457-AF8C-C06849F370EC} = {80F3576A-389B-4F5F-A9B8-E4DF4C8730ED}
+		{E7D6ADA5-B693-43D5-B258-FA8EEDBEB91B} = {80F3576A-389B-4F5F-A9B8-E4DF4C8730ED}
 	EndGlobalSection
 EndGlobal
