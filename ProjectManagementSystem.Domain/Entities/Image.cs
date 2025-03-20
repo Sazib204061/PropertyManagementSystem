@@ -12,6 +12,6 @@ namespace ProjectManagementSystem.Domain.Entities
     {
         public int ImageId { get; set; }
         public string Path { get; set; } = string.Empty;
-        public int DetailsId { get; set; }
+        public int PropertyDetailsId { get; set; }
     }
 }
