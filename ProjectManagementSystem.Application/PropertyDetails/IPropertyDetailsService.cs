@@ -10,9 +10,9 @@ namespace ProjectManagementSystem.Application.PropertyDetails
     {
         Task<IList<PropertyDetailsVM>> GetAllPropertyDetailsAsync();
         Task AddPropertyDetailsAsync(PropertyDetailsVM propertyDetails);
-        Task<PropertyDetailsVM> GetPropertyDetailsByIdAsync(int Id);
-        Task UpdatePropertyDetailsAsync(int Id, PropertyDetailsVM propertyDetails);
-        Task DeletePropertyDetailsAsync(int Id);
+        Task<PropertyDetailsVM> GetPropertyDetailsByIdAsync(int id);
+        Task UpdatePropertyDetailsAsync(int id, PropertyDetailsVM propertyDetails);
+        Task DeletePropertyDetailsAsync(int id);
         
     }
 }

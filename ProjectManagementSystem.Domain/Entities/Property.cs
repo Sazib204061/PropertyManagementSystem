@@ -13,8 +13,8 @@ namespace ProjectManagementSystem.Domain.Entities
     {
         public string? Name { get; set; }
         public Zone? Zone { get; set; }
-        public Owner Owner { get; set; }
-        public  PropertyDetails? PropertyDetails { get; set; }
+        public Owner? Owner { get; set; }
+        public  PropertyDetail? PropertyDetails { get; set; }
         
         public PropertyStatus Status { get; set; }
         public string? Type { get; set; }

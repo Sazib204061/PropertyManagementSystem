@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AutoMapper;
-using ProjectManagementSystem.Application.Owner;
+﻿using AutoMapper;
 using ProjectManagementSystem.Application.Repository;
 
 namespace ProjectManagementSystem.Application.City
@@ -23,7 +17,7 @@ namespace ProjectManagementSystem.Application.City
 
         public async Task AddCityAsync(CityVM city)
         {
-           var cityToCreate = _mapper.Map<CityVM>(city);
+            var cityToCreate = _mapper.Map<CityVM>(city);
             await _cityRepository.AddAsync(cityToCreate);
 
 

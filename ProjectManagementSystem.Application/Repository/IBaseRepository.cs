@@ -15,6 +15,5 @@ namespace ProjectManagementSystem.Application.Repository
         Task UpdateAsync(T entity);
         Task DeleteAsync(int id);
         Task AddAsync(T entity);
-        Task AddAsync(ImageVM img);
     }
 }
