@@ -7,9 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Appointment\" />
-    <Folder Include="Zone\" />
-    <Folder Include="Property\" />
+    <Compile Remove="Property\**" />
+    <EmbeddedResource Remove="Property\**" />
+    <None Remove="Property\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Appointments\" />
+    <Folder Include="Zones\" />
   </ItemGroup>
 
   <ItemGroup>
