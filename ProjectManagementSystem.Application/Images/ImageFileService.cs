@@ -1,13 +1,6 @@
 ﻿using AutoMapper;
-using ProjectManagementSystem.Application.Images;
-using ProjectManagementSystem.Application.Owner;
 using ProjectManagementSystem.Application.Repository;
 using ProjectManagementSystem.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ProjectManagementSystem.Application.Images
 {
@@ -15,7 +8,7 @@ namespace ProjectManagementSystem.Application.Images
     {
         private readonly IBaseRepository<Image> _imageRepository;
         private readonly IMapper _mapper;
-        
+
         public ImageFileService(IBaseRepository<Image> imageRepository, IMapper mapper)
         {
             _imageRepository = imageRepository;
@@ -35,7 +28,7 @@ namespace ProjectManagementSystem.Application.Images
 
         public async Task AddImageAsync(ImageVM img)
         {
-            var addImage = _mapper.Map<ImageVM>(img);
+            var addImage = _mapper.Map<Image>(img);
             await _imageRepository.AddAsync(addImage);
         }
 

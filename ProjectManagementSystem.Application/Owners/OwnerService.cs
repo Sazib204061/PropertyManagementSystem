@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 
 
-namespace ProjectManagementSystem.Application.Owner
+namespace ProjectManagementSystem.Application.Owners
 {
     public class OwnerService : IOwnerService
     {
