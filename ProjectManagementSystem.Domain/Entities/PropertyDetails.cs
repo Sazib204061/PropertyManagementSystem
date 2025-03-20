@@ -11,10 +11,10 @@ namespace ProjectManagementSystem.Domain.Entities
 {
     public class PropertyDetails : BaseEntity
     {
-        public int PropertyDetailsId { get; set; }
-        public int PropertyId { get; set; }
+        
         public int TotalRooms { get; set; }
         public int Size { get; set; }
-        public ICollection<Image> Images { get; set; } = [];
+        public ICollection<Image>? Images { get; set; } = [];
+        public int PropertyId { get; set; }
     }
 }

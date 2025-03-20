@@ -9,8 +9,7 @@ namespace ProjectManagementSystem.Domain.Entities
 {
     public class Zone : BaseEntity 
     {
-        public int ZoneId { get; set; }
-        public string? Name { get; set; } = string.Empty;
+        public string Name { get; set; } = string.Empty;
         public int CityId { get; set; }
     }
 }
