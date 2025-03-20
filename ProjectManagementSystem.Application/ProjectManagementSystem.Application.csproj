@@ -14,7 +14,6 @@
 
   <ItemGroup>
     <Folder Include="Appointments\" />
-    <Folder Include="Zones\" />
   </ItemGroup>
 
   <ItemGroup>

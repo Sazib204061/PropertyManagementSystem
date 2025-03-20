@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using ProjectManagementSystem.Application.Repository;
+using ProjectManagementSystem.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -9,10 +10,10 @@ namespace ProjectManagementSystem.Application.Owners
 {
     public class OwnerService : IOwnerService
     {
-        private readonly IBaseRepository<OwnerVM> _ownerRepository;
+        private readonly IBaseRepository<Owner> _ownerRepository;
         private readonly IMapper _mapper;
 
-        public OwnerService(IBaseRepository<OwnerVM> ownerRepository, IMapper mapper)
+        public OwnerService(IBaseRepository<Owner> ownerRepository, IMapper mapper)
         {
             _ownerRepository = ownerRepository;
             _mapper = mapper;
@@ -33,7 +34,7 @@ namespace ProjectManagementSystem.Application.Owners
 
         public async  Task AddOwnerAsync(OwnerVM owner)
         {
-            var ownerToCreate = _mapper.Map<OwnerVM>(owner);
+            var ownerToCreate = _mapper.Map<Owner>(owner);
             await _ownerRepository.AddAsync(ownerToCreate);
         }
 

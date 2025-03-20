@@ -11,8 +11,8 @@ namespace ProjectManagementSystem.Application.Owners
         Task<IList<OwnerVM>> GetAllOwnersAsync();
         Task<OwnerVM> GetOwnerByIdAsync(int id);
         Task AddOwnerAsync(OwnerVM owner);
-        Task UpdateOwnerAsync(int Id, OwnerVM owner);
+        Task UpdateOwnerAsync(int id, OwnerVM owner);
         Task DeleteOwnerAsync(int id);
-        //Task<OwnerVM> GetOwnerByNameAsync(string Name);
+        
     }
 }
