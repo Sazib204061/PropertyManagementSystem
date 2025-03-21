@@ -12,8 +12,8 @@ using PropertyManagementSystem.Infrastructure.Data;
 namespace PropertyManagementSystem.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250321082500_initial1")]
-    partial class initial1
+    [Migration("20250321102840_initial")]
+    partial class initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

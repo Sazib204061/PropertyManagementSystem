@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using ProjectManagementSystem.Application.Cities;
 using PropertyManagementSystem.Web.Models;
 
 namespace PropertyManagementSystem.Web.Controllers
@@ -7,15 +8,20 @@ namespace PropertyManagementSystem.Web.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly ICityService _cityService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ICityService cityService,ILogger<HomeController> logger)
         {
+            _cityService = cityService;
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+
+            var cities = await _cityService.GetAllCitiesAsync();
+
+            return View(cities);
         }
 
         public IActionResult Privacy()
