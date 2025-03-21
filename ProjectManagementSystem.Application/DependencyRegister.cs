@@ -23,6 +23,7 @@ namespace ProjectManagementSystem.Application
             services.AddScoped<IZoneService, ZoneService>();
             services.AddScoped<IOwnerService, OwnerService>();
 
+            //services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             return services;
