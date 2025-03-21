@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using ProjectManagementSystem.Domain.Entities;
 
 namespace PropertyManagementSystem.Infrastructure.Data
 {
@@ -20,7 +21,15 @@ namespace PropertyManagementSystem.Infrastructure.Data
         }
 
         // DbSets
-        
-        
+        public DbSet<City> Cities { get; set; }
+        public DbSet<Owner> Owners { get; set; }
+        public DbSet<Property> Properties { get; set; }
+        public DbSet<PropertyDetail> PropertyDetails { get; set; }
+        public DbSet<Appointment> Appointments { get; set; }
+        public DbSet<Image> Images { get; set; }
+        public DbSet<Zone> Zones { get; set; }
+
+
+
     }
 }

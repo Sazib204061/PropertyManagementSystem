@@ -1,14 +1,15 @@
 ﻿using AutoMapper;
 using ProjectManagementSystem.Application.Repository;
+using ProjectManagementSystem.Domain.Entities;
 
-namespace ProjectManagementSystem.Application.City
+namespace ProjectManagementSystem.Application.Cities
 {
     public class CityService : ICityService
     {
-        private readonly IBaseRepository<CityVM> _cityRepository;
+        private readonly IBaseRepository<City> _cityRepository;
         private readonly IMapper _mapper;
 
-        public CityService(IBaseRepository<CityVM> cityRepository, IMapper mapper)
+        public CityService(IBaseRepository<City> cityRepository, IMapper mapper)
         {
             _cityRepository = cityRepository;
             _mapper = mapper;
@@ -17,10 +18,8 @@ namespace ProjectManagementSystem.Application.City
 
         public async Task AddCityAsync(CityVM city)
         {
-            var cityToCreate = _mapper.Map<CityVM>(city);
+            var cityToCreate = _mapper.Map<City>(city);
             await _cityRepository.AddAsync(cityToCreate);
-
-
         }
 
         public async Task DeleteCityAsync(int id)
@@ -42,6 +41,10 @@ namespace ProjectManagementSystem.Application.City
         public async Task<CityVM> GetCityByIdAsync(int id)
         {
             var city = await _cityRepository.GetByIdAsync(id);
+            if (city == null)
+            {
+                throw new KeyNotFoundException($"City with ID {id} not found.");
+            }
             return _mapper.Map<CityVM>(city);
         }
 
@@ -60,12 +63,12 @@ namespace ProjectManagementSystem.Application.City
 
 
 
-        public async Task UpdateCityAsync(int Id, CityVM city)
+        public async Task UpdateCityAsync(int id, CityVM city)
         {
-            var existingCity = await _cityRepository.GetByIdAsync(Id);
+            var existingCity = await _cityRepository.GetByIdAsync(id);
             if (existingCity == null)
             {
-                throw new KeyNotFoundException($"City with ID {Id} not found.");
+                throw new KeyNotFoundException($"City with ID {id} not found.");
             }
             _mapper.Map(city, existingCity);
             await _cityRepository.UpdateAsync(existingCity);

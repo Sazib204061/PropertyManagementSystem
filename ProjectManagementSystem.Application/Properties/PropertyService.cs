@@ -1,66 +1,61 @@
 ﻿using AutoMapper;
 using ProjectManagementSystem.Application.Repository;
 using ProjectManagementSystem.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace ProjectManagementSystem.Application.Properties
 {
     //nothing
     public class PropertyService : IPropertyService
     {
-        private readonly IBaseRepository<Property> propertyRepository;
+        private readonly IBaseRepository<Property> _propertyRepository;
         private readonly IMapper _mapper;
 
         public PropertyService(IBaseRepository<Property> propertyRepository, IMapper mapper)
         {
-            this.propertyRepository = propertyRepository;
+            _propertyRepository = propertyRepository;
             _mapper = mapper;
         }
-
-
-
 
         public async Task AddPropertyAsync(PropertyVM property)
         {
             var addproperty = _mapper.Map<Property>(property);
-            await propertyRepository.AddAsync(addproperty);
-
+            await _propertyRepository.AddAsync(addproperty);
         }
 
-        public async Task DeletePropertyAsync(int id, PropertyVM property)
+        public async Task<PropertyVM> GetPropertyByIdAsync(int id)
         {
-            await propertyRepository.DeleteAsync(id);
-            
+            var property = await _propertyRepository.GetByIdAsync(id);
+            if (property == null)
+            {
+                throw new KeyNotFoundException($"Property with Id {id} not found");
+            }
+            return _mapper.Map<PropertyVM>(property);
         }
 
-        public Task<IList<PropertyVM>> GetAllPropertysAsync()
+        public async Task UpdatePropertyAsync(int id, PropertyVM property)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task GetPropertyByIdAsync(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task UpdatePropertyAsync(int Id, PropertyVM property)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<IList<PropertyVM>> GetAllPropertiesAsync()
-        {
-            throw new NotImplementedException();
+            var existingProperty = await _propertyRepository.GetByIdAsync(id);
+            if (existingProperty == null)
+            {
+                throw new KeyNotFoundException($"Property with Id {id} not found");
+            }
+            _mapper.Map(property, existingProperty);
+            await _propertyRepository.UpdateAsync(existingProperty);
         }
 
         public async Task DeletePropertyAsync(int id)
         {
-            await propertyRepository.DeleteAsync(id);
+            var existingProperty = await _propertyRepository.GetByIdAsync(id);
+            if (existingProperty == null)
+            {
+                throw new KeyNotFoundException($"Property with Id {id} not found");
+            }
+            await _propertyRepository.DeleteAsync(id);
+        }
+
+        public async Task<IEnumerable<PropertyVM>> GetAllPropertiesAsync()
+        {
+            var properties = await _propertyRepository.GetAllAsync();
+            return _mapper.Map<IEnumerable<PropertyVM>>(properties);
         }
     }
 }

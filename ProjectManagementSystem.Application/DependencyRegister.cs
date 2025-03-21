@@ -1,11 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Reflection;
 using Microsoft.Extensions.DependencyInjection;
-using ProjectManagementSystem.Application.City;
+using ProjectManagementSystem.Application.Appointments;
+using ProjectManagementSystem.Application.Cities;
 using ProjectManagementSystem.Application.Images;
+using ProjectManagementSystem.Application.Owners;
+using ProjectManagementSystem.Application.Properties;
+using ProjectManagementSystem.Application.PropertyDetails;
+using ProjectManagementSystem.Application.Zones;
 
 namespace ProjectManagementSystem.Application
 {
@@ -16,9 +17,14 @@ namespace ProjectManagementSystem.Application
             //add all services here
             services.AddScoped<ICityService, CityService>();
             services.AddScoped<IImageFileService, ImageFileService>();
+            services.AddScoped<IAppointmentService, AppointmentService>();
+            services.AddScoped<IPropertyService, PropertyService>();
+            services.AddScoped<IPropertyDetailsService, PropertyDetailsService>();
+            services.AddScoped<IZoneService, ZoneService>();
+            services.AddScoped<IOwnerService, OwnerService>();
 
-            //services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
+            services.AddAutoMapper(Assembly.GetExecutingAssembly());
             return services;
         }
     }

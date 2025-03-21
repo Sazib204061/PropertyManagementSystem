@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using ProjectManagementSystem.Application.Repository;
 using ProjectManagementSystem.Domain.Entities;
 
@@ -18,7 +13,6 @@ namespace ProjectManagementSystem.Application.PropertyDetails
         {
             _propertyDetailsRepository = propertyDetailsRepository;
             _mapper = mapper;
-
         }
 
         public async Task<IList<PropertyDetailsVM>> GetAllPropertyDetailsAsync()
@@ -34,6 +28,10 @@ namespace ProjectManagementSystem.Application.PropertyDetails
         public async Task<PropertyDetailsVM> GetPropertyDetailsByIdAsync(int id)
         {
             var propertyDetails = await _propertyDetailsRepository.GetByIdAsync(id);
+            if (propertyDetails == null)
+            {
+                throw new KeyNotFoundException($"PropertyDetails with ID {id} not found.");
+            }
             return _mapper.Map<PropertyDetailsVM>(propertyDetails);
 
         }
@@ -42,7 +40,7 @@ namespace ProjectManagementSystem.Application.PropertyDetails
             var existingPropertyDetails = await _propertyDetailsRepository.GetByIdAsync(id);
             if (existingPropertyDetails == null)
             {
-                throw new Exception("Property Details not found");
+                throw new KeyNotFoundException($"PropertyDetails with ID {id} not found.");
             }
             _mapper.Map(propertyDetails, existingPropertyDetails);
             await _propertyDetailsRepository.UpdateAsync(existingPropertyDetails);
@@ -53,7 +51,7 @@ namespace ProjectManagementSystem.Application.PropertyDetails
             var existingPropertyDetails = await _propertyDetailsRepository.GetByIdAsync(id);
             if (existingPropertyDetails == null)
             {
-                throw new Exception("Property Details not found");
+                throw new KeyNotFoundException($"PropertyDetails with ID {id} not found.");
             }
             await _propertyDetailsRepository.DeleteAsync(id);
         }

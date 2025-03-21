@@ -3,9 +3,9 @@
     public interface IImageFileService
     {
         Task<IList<ImageVM>> GetAllImagesAsync();
-        Task<ImageVM> GetImageByIdAsync(int ImageId);
+        Task<ImageVM> GetImageByIdAsync(int id);
         Task AddImageAsync(ImageVM img);
-        Task UpdateImageAsync(int ImageId, ImageVM img);
-        Task DeleteImageAsync(int ImageId);
+        Task UpdateImageAsync(int id, ImageVM img);
+        Task DeleteImageAsync(int id);
     }
 }

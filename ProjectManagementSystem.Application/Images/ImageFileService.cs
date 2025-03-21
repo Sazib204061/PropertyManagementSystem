@@ -19,38 +19,40 @@ namespace ProjectManagementSystem.Application.Images
             var images = await _imageRepository.GetAllAsync();
             return _mapper.Map<IList<ImageVM>>(images);
         }
-
-        public async Task<ImageVM> GetImageByIdAsync(int ImageId)
-        {
-            var image = await _imageRepository.GetByIdAsync(ImageId);
-            return _mapper.Map<ImageVM>(image);
-        }
-
         public async Task AddImageAsync(ImageVM img)
         {
             var addImage = _mapper.Map<Image>(img);
             await _imageRepository.AddAsync(addImage);
         }
-
-        public async Task UpdateImageAsync(int ImageId, ImageVM img)
+        public async Task<ImageVM> GetImageByIdAsync(int id)
         {
-            var exist_image = await _imageRepository.GetByIdAsync(ImageId);
-            if (exist_image == null)
+            var image = await _imageRepository.GetByIdAsync(id);
+            if(image == null)
             {
-                throw new KeyNotFoundException($"Image with Id {ImageId} not found");
+                throw new KeyNotFoundException($"Image with Id {id} not found");
             }
-            _mapper.Map(img, exist_image);
-            await _imageRepository.UpdateAsync(exist_image);
+            return _mapper.Map<ImageVM>(image);
         }
 
-        public async Task DeleteImageAsync(int ImageId)
+        public async Task UpdateImageAsync(int id, ImageVM img)
         {
-            var exist_image = await _imageRepository.GetByIdAsync(ImageId);
-            if (exist_image == null)
+            var existImage = await _imageRepository.GetByIdAsync(id);
+            if (existImage == null)
             {
-                throw new KeyNotFoundException($"Image with Id {ImageId} not found");
+                throw new KeyNotFoundException($"Image with Id {id} not found");
             }
-            await _imageRepository.DeleteAsync(ImageId);
+            _mapper.Map(img, existImage);
+            await _imageRepository.UpdateAsync(existImage);
+        }
+
+        public async Task DeleteImageAsync(int id)
+        {
+            var existImage = await _imageRepository.GetByIdAsync(id);
+            if (existImage == null)
+            {
+                throw new KeyNotFoundException($"Image with Id {id} not found");
+            }
+            await _imageRepository.DeleteAsync(id);
         }
     }
 }
