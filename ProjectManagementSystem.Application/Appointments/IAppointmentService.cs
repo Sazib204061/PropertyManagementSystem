@@ -12,7 +12,7 @@ namespace ProjectManagementSystem.Application.Appointments
         Task<IList<AppointmentVM>> GetAllAppointmentsAsync();
         Task AddAppointmentAsync(AppointmentVM Appointment);
         Task UpdateAppointmentAsync(int Id, AppointmentVM Appointment);
-        Task DeleteAppointmentAsync(int id);
+        Task DeleteAppointmentAsync(int id );
         Task<AppointmentVM> GetAppointmentByIdAsync(int id);
         Task<AppointmentVM> GetAppointmentByNameAsync(string Name);
 

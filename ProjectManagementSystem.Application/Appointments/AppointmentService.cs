@@ -51,12 +51,12 @@ namespace ProjectManagementSystem.Application.Appointments
 
         public async Task<AppointmentVM> GetAppointmentByNameAsync(string name)
         {
-            var ap = _appointmentRepository.Table.Where(x => x.UserName == name).FirstOrDefault();
+            var apnt = _appointmentRepository.Table.Where(x => x.UserName == name).FirstOrDefault();
 
-            if (ap == null)
+            if (apnt == null)
                 throw new KeyNotFoundException("Appointment not found.");
 
-            return _mapper.Map<AppointmentVM>(ap);
+            return _mapper.Map<AppointmentVM>(apnt);
         }
 
 
