@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
 using ProjectManagementSystem.Application.Appointments;
+using ProjectManagementSystem.Application.Cities;
+using ProjectManagementSystem.Application.Zones;
 using ProjectManagementSystem.Domain.Entities;
 
 namespace ProjectManagementSystem.Application.Profiles
@@ -8,7 +10,8 @@ namespace ProjectManagementSystem.Application.Profiles
     {
         public MappingProfile()
         {
-            CreateMap<Appointment, AppointmentVM>().ReverseMap();
+            CreateMap<City, CityVM>().ReverseMap();
+            CreateMap<Zone, ZoneVM>().ReverseMap();
         }
     }
 }
