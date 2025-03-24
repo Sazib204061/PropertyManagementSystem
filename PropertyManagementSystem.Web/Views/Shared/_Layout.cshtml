@@ -1,5 +1,21 @@
-﻿<!DOCTYPE html>
+﻿@using ProjectManagementSystem.Application.Cities
+@using ProjectManagementSystem.Application.Zones
+
+@inject ICityService ICityService
+@{
+    var cities = await ICityService.GetAllCitiesAsync();
+}
+
+@inject IZoneService IZoneService
+@{
+	var zones = await IZoneService.GetAllZonesAsync();
+}
+
+<!DOCTYPE html>
 <html lang="en">
+
+
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -229,11 +245,10 @@
                                     <div class="aa-single-advance-search">
                                         <select>
                                             <option>City</option>
-                                            <option value="0">Chittagong</option>
-                                            <option value="1">Dhaka</option>
-                                            <option value="2">Cumilla</option>
-                                            <option value="3">Gazipur</option>
-
+											@foreach (var city in cities)
+											{
+												<option value="@city.Id">@city.Name</option>
+											}
                                         </select>
                                     </div>
                                 </div>
@@ -243,10 +258,10 @@
                                     <div class="aa-single-advance-search">
                                         <select>
                                             <option>Zone</option>
-                                            <option value="1">Mirpur 10</option>
-                                            <option value="2">Uttara</option>
-                                            <option value="3">Banani</option>
-                                            <option value="4">DOHS</option>
+                                            @foreach(var zone in zones)
+                                            {
+												<option value="@zone.Id">@zone.Name</option>
+                                            }
                                         </select>
                                     </div>
                                 </div>
